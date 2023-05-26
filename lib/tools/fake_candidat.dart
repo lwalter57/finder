@@ -6,8 +6,6 @@ import 'package:museum/enums/gender.dart';
 List<Candidat> generateCandidats() {
   var faker = Faker();
   Random random = Random();
-  int randomNumber = random.nextInt(7);
-  int randomPersonn = random.nextInt(15);
 
   List<String> maleFirstname = [
     "Thomas",
@@ -32,14 +30,22 @@ List<Candidat> generateCandidats() {
   List<Candidat> candidats = [];
 
   for (int i = 0; i < 15; i++) {
-    candidats.add(Candidat(
-        firstname: maleFirstname[randomNumber],
-        lastname: faker.person.lastName(),
-        gender: Gender.man,
-        avatar: "man-$randomPersonn.png"));
+    int randomNumber = random.nextInt(8);
+    int randomPersonn = random.nextInt(14);
+    candidats.add(
+      Candidat(
+          firstname: maleFirstname[randomNumber],
+          lastname: faker.person.lastName(),
+          gender: Gender.man,
+          avatar: "assets/images/man-$randomPersonn.png",
+          job: faker.job.title(),
+          description: "Coucou"),
+    );
   }
 
   for (int i = 0; i < 15; i++) {
+    int randomNumber = random.nextInt(7);
+    int randomPersonn = random.nextInt(15);
     candidats.add(Candidat(
         firstname: femaleFirstname[randomNumber],
         lastname: faker.person.lastName(),
